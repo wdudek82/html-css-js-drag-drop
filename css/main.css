@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+.hide-original {
+  /* display: none; */
+}
+
+.dragged-element {
+  background: red;
+  color: red;
+  border: 1ps solid pink;
+}
+
+#drag1 {
+  width: 100px;
+}
