@@ -11,14 +11,16 @@ const drop = (e) => {
   let item = document.getElementById(data);
 
   item.classList.remove('hide-original');
-  e.target.appendChild(item);
+
+  if (!e.target.contains(item)) {
+    e.target.appendChild(item);
+  }
 
   console.log('drop', data, e.target.id);
 };
 
 const allowDrop = (e) => {
   e.preventDefault();
-  console.log('dragover');
 };
 
 div1.addEventListener('drop', drop);
@@ -32,16 +34,17 @@ div3.addEventListener('dragover', allowDrop);
 div4.addEventListener('dragover', allowDrop);
 
 drag1.addEventListener('dragstart', (e) => {
-  let dt = e.dataTransfer
+  let dt = e.dataTransfer;
   dt.setData('text', e.target.id);
-
-  // let img = new Image();
-  // img.src = './sun.png';
-  // img.width = '10';
-
-  // dt.setDragImage(img, 0, 0);
-
+  
   e.target.classList.add('hide-original');
+});
 
-  console.log('dragstart', e.target);
+drag1.addEventListener('dragend', (e) => {
+  let itemId = e.target.id;
+  let item = document.getElementById(itemId);
+
+  if (item.classList.contains('hide-original')) {
+    item.classList.remove('hide-original');
+  }
 });
