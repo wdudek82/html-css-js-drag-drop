@@ -7,9 +7,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 200px;
-  height: 200px;
-  border: 1px solid black;
+  width: 150px;
+  height: 150px;
+  border: 1px solid #999;
 }
 
 .hide-original {
@@ -20,6 +20,11 @@
   background: red;
   color: red;
   border: 1ps solid pink;
+}
+
+.item-over {
+  background: rgb(235, 236, 227);
+  border: 1px solid black;
 }
 
 #drag1 {

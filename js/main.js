@@ -19,9 +19,14 @@ const drop = (e) => {
   console.log('drop', data, e.target.id);
 };
 
-const allowDrop = (e) => {
+function allowDrop(e) {
   e.preventDefault();
-};
+  e.target.classList.add('item-over');
+}
+
+function itemLeftAreat(e) {
+  e.target.classList.remove('item-over');
+}
 
 div1.addEventListener('drop', drop);
 div2.addEventListener('drop', drop);
@@ -33,18 +38,23 @@ div2.addEventListener('dragover', allowDrop);
 div3.addEventListener('dragover', allowDrop);
 div4.addEventListener('dragover', allowDrop);
 
+div1.addEventListener('dragleave', itemLeftAreat);
+div2.addEventListener('dragleave', itemLeftAreat);
+div3.addEventListener('dragleave', itemLeftAreat);
+div4.addEventListener('dragleave', itemLeftAreat);
+
 drag1.addEventListener('dragstart', (e) => {
   let dt = e.dataTransfer;
   dt.setData('text', e.target.id);
-  
+
   e.target.classList.add('hide-original');
 });
 
 drag1.addEventListener('dragend', (e) => {
   let itemId = e.target.id;
-  let item = document.getElementById(itemId);
 
-  if (item.classList.contains('hide-original')) {
-    item.classList.remove('hide-original');
+  // if (item.classList.contains('hide-original')) {
+  if (e.target.classList.contains('hide-original')) {
+    e.target.classList.remove('hide-original');
   }
 });
